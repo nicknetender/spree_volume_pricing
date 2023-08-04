@@ -4,7 +4,8 @@ module SpreeVolumePricing
     isolate_namespace Spree
     engine_name 'spree_volume_pricing'
 
-    initializer 'spree_volume_pricing.preferences', before: 'spree.environment' do
+    #initializer 'spree_volume_pricing.preferences', before: 'spree.environment' do
+    config.after_initialize do |app|
       Spree::AppConfiguration.class_eval do
         preference :use_master_variant_volume_pricing, :boolean, default: false
         preference :volume_pricing_role, :string, default: 'wholesale'
